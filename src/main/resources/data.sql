@@ -1,0 +1,1 @@
+INSERT INTO tasks VALUES (DEFAULT,'Почистить зубы','NOT_STARTED',CURRENT_DATE);
