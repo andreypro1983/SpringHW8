@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.geekbrains</groupId>
-	<artifactId>SpringHW5</artifactId>
+	<artifactId>SpringHW8</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringHW5</name>
 	<description>SpringHW5</description>
