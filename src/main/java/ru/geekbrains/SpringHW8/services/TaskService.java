@@ -8,6 +8,7 @@ import ru.geekbrains.SpringHW8.model.TaskStatus;
 import ru.geekbrains.SpringHW8.repositories.TaskRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -33,11 +34,15 @@ public class TaskService {
 
     //обновление статуса задачи на следующий по очереди
     public Task updateTaskStatus(Long id) {
-        Task task = tasksRepository.findById(id).orElse(null);
-        if (task != null && !(task.getStatus().equals(TaskStatus.COMPLETED))) {
-            task.setStatus(TaskStatus.values()[task.getStatus().ordinal() + 1]);
+        Task newTask = null;
+        Optional<Task> task = tasksRepository.findById(id);
+        if (task.isPresent()) {
+            newTask = task.get();
+            if (!(newTask.getStatus().equals(TaskStatus.COMPLETED))) {
+                newTask.setStatus(TaskStatus.values()[newTask.getStatus().ordinal() + 1]);
+            }
         }
-        return tasksRepository.save(task);
+        return tasksRepository.save(newTask);
     }
 
     //удаление задачи
