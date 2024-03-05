@@ -52,6 +52,7 @@ public class AnnotationModuleTaskServiceTest {
 
  }
 
+    //Проверка для задачи со статусом COMPLETED
     @Test
     @DisplayName("updateTaskStatusCompleted")
     public void updateTaskStatusCompletedTest(){

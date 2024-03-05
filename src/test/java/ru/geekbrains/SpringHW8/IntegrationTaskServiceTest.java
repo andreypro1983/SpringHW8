@@ -26,7 +26,7 @@ public class IntegrationTaskServiceTest {
     private TaskService taskService;
 
 
-    //Проверка для задачи со статусом отличным от COMPLETED
+    //Интеграционное тестирование для задачи со статусом отличным от COMPLETED
     @Test
     @DisplayName("updateTaskStatusChange")
     public void updateTaskStatusChangeTest(){
