@@ -1,5 +1,7 @@
 package ru.geekbrains.SpringHW8.controllers;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Metrics;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.SpringHW8.model.Task;
@@ -13,6 +15,9 @@ import java.util.List;
 @RequestMapping("/tasks")
 public class TaskController {
 
+    // Добавление собственной метрики - счетчика для отслеживания
+    private final Counter addTaskCounter = Metrics.counter("my_add_new_task_counter");
+
     private TaskService taskService;
 
     //вывести все задачи
@@ -24,6 +29,8 @@ public class TaskController {
     //добавление задачи
     @PostMapping
     public Task addTask(@RequestBody Task task) {
+        // Увеличение счетчика для мониторинга
+        addTaskCounter.increment();
         return taskService.addTask(task);
     }
 
